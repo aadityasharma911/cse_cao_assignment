@@ -1,0 +1,15 @@
+.data
+float_to_print: .float 3.14  # Define a floating-point value to print
+
+.text
+main:
+    # Load the floating-point value from memory into $f0
+    l.s $f0, float_to_print     #load single floating point 
+
+    # Print the floating-point number in $f0
+    li $v0, 2    # Load the system call code for printing a floating-point number (2) into $v0
+    syscall
+
+    # Exit the program
+    li $v0, 10   # Load the system call code for program exit (10) into $v0
+    syscall
