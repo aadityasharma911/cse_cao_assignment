@@ -1,0 +1,15 @@
+.data
+int_to_print: .word 42  # Define an integer value to print
+
+.text
+main:
+    # Load the integer value from memory into $a0
+    lw $a0, int_to_print
+
+    # Print the integer in $a0
+    li $v0, 1    # Load the system call code for printing an integer (1) into $v0
+    syscall
+
+    # Exit the program
+    li $v0, 10   # Load the system call code for program exit (10) into $v0
+    syscall
