@@ -1,18 +1,12 @@
 .data
-double_to_print: .double 3.141592653589793  # Define a double-precision value to print
+double_to_print: .double 3.141592653589793  
 
 .text
 main:
-    # Load the double-precision value from memory into $f12 and $f13
+    # Load the double-precision value from memory into $f12 
     l.d $f12, double_to_print
 
-    # Convert the double to a string
-    li $v0, 3      # Load the system call code for double to string conversion (3) into $v0
-    syscall
-
-    # Print the string representation of the double
-    move $a0, $v0  # Move the address of the converted string to $a0
-    li $v0, 4      # Load the system call code for printing a string (4) into $v0
+    li $v0,3
     syscall
 
     # Exit the program
