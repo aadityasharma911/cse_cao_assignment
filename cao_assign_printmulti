@@ -1,0 +1,68 @@
+.data
+int_prompt: .asciiz "Printing an Integer: "
+int_val: .word 42
+
+str_prompt: .asciiz "Printing a String: "
+str_val: .asciiz "Hello, MIPS!"
+
+char_prompt: .asciiz "Printing a Character: "
+char_val: .byte 'A'
+
+float_prompt: .asciiz "Printing a Float: "
+float_val: .float 3.14159
+
+double_prompt: .asciiz "Printing a Double: "
+double_val: .double 2.71828
+
+.text
+.globl main
+
+main:
+    # Print an integer
+    li $v0, 4
+    la $a0, int_prompt
+    syscall
+
+    lw $a0, int_val
+    li $v0, 1
+    syscall
+
+    # Print a string
+    li $v0, 4
+    la $a0, str_prompt
+    syscall
+
+    la $a0, str_val
+    li $v0, 4
+    syscall
+
+    # Print a character
+    li $v0, 4
+    la $a0, char_prompt
+    syscall
+
+    lb $a0, char_val
+    li $v0, 11
+    syscall
+
+    # Print a float
+    li $v0, 4
+    la $a0, float_prompt
+    syscall
+
+    l.s $f12, float_val
+    li $v0, 2
+    syscall
+
+    # Print a double
+    li $v0, 4
+    la $a0, double_prompt
+    syscall
+
+    l.d $f12, double_val
+    li $v0, 3
+    syscall
+
+    # Exit the program
+    li $v0, 10
+    syscall
